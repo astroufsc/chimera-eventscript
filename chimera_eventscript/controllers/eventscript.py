@@ -34,7 +34,6 @@ class EventScript(ChimeraObject):
                 modpath = os.path
             image_fname = modpath.basename(image_fname)
             image_type = proxy["IMAGETYP"] if "IMAGETYP"in proxy.keys() else "UNKNOWN"
-            print script, image_fname, dict(proxy)
             os.system("%s %s %s" % (os.path.expanduser(script), image_fname, image_type))
         return
 
