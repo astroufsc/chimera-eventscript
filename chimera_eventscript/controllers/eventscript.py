@@ -32,7 +32,7 @@ class EventScript(ChimeraObject):
                 modpath = ntpath
             else:
                 modpath = os.path
-            image_fname = ImageUtil.makeFilename(modpath.basename(image_fname))
+            image_fname = modpath.basename(image_fname)
             image_type = proxy["IMAGETYP"] if "IMAGETYP"in proxy.keys() else "UNKNOWN"
             os.system("%s %s %s" % (os.path.expanduser(script), image_fname, image_type))
         return
