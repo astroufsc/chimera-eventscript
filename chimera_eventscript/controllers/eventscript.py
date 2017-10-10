@@ -1,6 +1,7 @@
 import ntpath
 import threading
 import os
+import subprocess
 from chimera.interfaces.camera import CameraStatus
 from chimera.util.image import ImageUtil, Image
 from chimera.controllers.imageserver.util import getImageServer
@@ -33,8 +34,8 @@ class EventScript(ChimeraObject):
             else:
                 modpath = os.path
             image_fname = modpath.basename(image_fname)
-            image_type = proxy["IMAGETYP"] if "IMAGETYP"in proxy.keys() else "UNKNOWN"
-            os.system("%s %s %s" % (os.path.expanduser(script), image_fname, image_type))
+            image_type = proxy["IMAGETYP"] if "IMAGETYP" in proxy.keys() else "UNKNOWN"
+            subprocess.call([os.path.expanduser(script), image_fname, image_type])
         return
 
     def _CameraReadoutCompleteClbk(self, proxy, status):
